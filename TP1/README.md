@@ -4,7 +4,7 @@ A Java implementation of a TCP client-server architecture managing a university 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 TP1/
@@ -18,7 +18,7 @@ TP1/
 
 ---
 
-## ⚙️ Compilation
+## Compilation
 
 Compile all Java source files into the `bin/` directory:
 
@@ -34,7 +34,7 @@ find src -name "*.java" | xargs javac -d bin -sourcepath src
 
 ---
 
-## 🚀 Execution Commands
+## Execution Commands
 
 ### Exercise 1: Local Domain Test
 Run the local unit test suite without network sockets:
