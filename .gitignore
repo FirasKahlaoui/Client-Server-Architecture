@@ -1,0 +1,13 @@
+*.out
+*.lof
+*.log
+*.lot
+*.gz
+*.toc
+*.aux
+
+*/.vscode
+*/.idea
+*/.project
+*/.classpath
+*/.settings
