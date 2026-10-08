@@ -1,0 +1,33 @@
+\documentclass[12pt,a4paper]{report}
+
+% ---------- Custom Style Package ----------
+\usepackage{mystyle}
+
+% ---------- Additional Packages ----------
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{parskip}
+\usepackage{enumitem}
+
+\graphicspath{{Figures/}}
+
+% ===================================================================
+\begin{document}
+
+\pagenumbering{roman}
+
+\title{Client-Server Architecture and Middleware Programming}
+\author{Engineering Report}
+
+\input{chapters/page_garde}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\clearpage
+\pagenumbering{arabic}
+
+\include{chapters/tp1}
+
+\end{document}
