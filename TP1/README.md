@@ -72,7 +72,7 @@ java -cp bin test.TestBibliothequeLocal
 
 ---
 
-## 📜 Supported Protocol Commands (Exercise 3)
+## Supported Protocol Commands (Exercise 3)
 
 - `LISTE` — Retrieve all catalog books.
 - `RECHERCHE;<theme>` — Search books by topic (e.g., `RECHERCHE;JAVA`).
