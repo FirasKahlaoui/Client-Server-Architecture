@@ -72,7 +72,12 @@ The functional contract guarantees:
 
 Local unit tests (\texttt{TestBibliothequeLocal}) confirmed all core features, including full catalog listing, topic search filtering, case-insensitivity, and exception handling for invalid inputs.
 
-% [SCREENSHOT: Local Test Execution Output (TestBibliothequeLocal - ALL LOCAL TESTS PASSED)]
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Figures/test_local_results.png}
+  \caption{Local Unit Test Execution Results}
+  \label{fig:test-local}
+\end{figure}
 
 \medskip
 \textbf{Question:} Connecting separate processes requires replacing direct local Java method calls with TCP socket message exchanges.
@@ -84,20 +89,23 @@ Local unit tests (\texttt{TestBibliothequeLocal}) confirmed all core features, i
 
 The server uses \texttt{ServerSocket.accept()} to receive client connections, while the client initiates a connection via \texttt{Socket(host, port)}. Messages are exchanged line-by-line in UTF-8 over \texttt{BufferedReader}/\texttt{BufferedWriter} streams, finalized with \texttt{flush()}.
 
-% [SCREENSHOT: Exercise 2 Code (ServeurBibliothequeTCP.java and ClientBibliothequeTCP.java)]
-
 \subsection{Execution Results}
 
-Running client and server as distinct processes over \texttt{127.0.9.9:5000} successfully returns \texttt{PONG} for a \texttt{PING} request, and \texttt{ERR;COMMANDE\_INCONNUE} otherwise. Disconnecting the server triggers a connection failure alert on the client. 
+Running client and server as distinct processes over \texttt{127.0.0.1:5000} successfully returns \texttt{PONG} for a \texttt{PING} request, and \texttt{ERR;COMMANDE\_INCONNUE} otherwise. Disconnecting the server triggers a connection failure alert on the client. 
 
-% [SCREENSHOT: PING/PONG Console Execution Output]
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Figures/ping_pong_execution.png}
+  \caption{PING/PONG Console Execution Output}
+  \label{fig:ping-pong}
+\end{figure}
 
 % -----------------------------------------------------------------------
 \section{Exercise 3 --- Library Services over TCP}
 
 \subsection{Protocol Mapping}
 
-Requests map directly to protocol lines: \texttt{LISTE} retrieves all books, and \texttt{RECHERCHE;theme} searches by topic. Successful responses follow \texttt{OK;n;id:title;...} (or \texttt{OK;0}9when empty). Protocol errors yield \texttt{ERR;COMMANDE\_INCONNUE} or \texttt{ERR;REQUETE\_INVALIDE}. Reserved delimiting characters (\texttt{;}, \texttt{:}, \texttt{,}) in search topics render requests invalid.
+Requests map directly to protocol lines: \texttt{LISTE} retrieves all books, and \texttt{RECHERCHE;theme} searches by topic. Successful responses follow \texttt{OK;n;id:title;...} (or \texttt{OK;0} when empty). Protocol errors yield \texttt{ERR;COMMANDE\_INCONNUE} or \texttt{ERR;REQUETE\_INVALIDE}. Reserved delimiting characters (\texttt{;}, \texttt{:}, \texttt{,}) in search topics render requests invalid.
 
 \subsection{Architecture Setup}
 
@@ -107,17 +115,26 @@ Requests map directly to protocol lines: \texttt{LISTE} retrieves all books, and
   \item \textbf{\texttt{ClientBibliotheque}:} Configurable client connecting to target IP/port, sending formatted commands, and printing responses.
 \end{itemize}
 
-% [SCREENSHOT: Exercise 3 Server Code (ServeurBibliotheque.java & ProtocoleBibliotheque.java)]
-% [SCREENSHOT: Exercise 3 Client Code (ClientBibliotheque.java)]
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Figures/ex3_server_code.png}
+  \caption{Protocol and Server Implementation Details}
+  \label{fig:ex3-server-code}
+\end{figure}
 
-\subsection{\texorpdfstring{Validation \& Testing}{Validation & Testing}}
+\subsection{\texorpdfstring{Validation \& Testing}{Validation and Testing}}
 
 All scenario test cases passed successfully: querying all books (\texttt{LISTE}), searching valid topics (\texttt{RECHERCHE;JAVA}), handling empty results (\texttt{RECHERCHE;HISTOIRE}), invalid syntax errors, robust server recovery after client errors, and remote deployment across distinct network hosts.
 
-% [SCREENSHOT: Exercise 3 Execution Outputs (Console logs for LISTE, RECHERCHE, errors, and cross-machine deployment)]
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Figures/exercise3_execution.png}
+  \caption{Exercise 3 Service Execution Outputs}
+  \label{fig:ex3-execution}
+\end{figure}
 
 % -----------------------------------------------------------------------
-\section{\texorpdfstring{Synthesis \& Questions}{Synthesis & Questions}}
+\section{\texorpdfstring{Synthesis \& Questions}{Synthesis and Questions}}
 
 \subsection{Final System Structure}
 
