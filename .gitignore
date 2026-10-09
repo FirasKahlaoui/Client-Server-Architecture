@@ -6,8 +6,8 @@
 *.toc
 *.aux
 
-*/.vscode
-*/.idea
-*/.project
-*/.classpath
-*/.settings
+.vscode/
+.idea/
+.project
+.classpath
+.settings/
