@@ -5,6 +5,7 @@
 *.gz
 *.toc
 *.aux
+*.class
 
 .vscode/
 .idea/

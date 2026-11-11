@@ -1,4 +1,4 @@
-package test;
+package ex1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,10 +14,10 @@ public class TestBibliothequeLocal {
     public static void main(String[] args) {
         GestionBibliotheque gestion = new GestionBibliotheque(Bibliotheque.catalogueInitial());
 
-        check("List all books", ids(gestion.listerLivres()), Arrays.asList("L1", "L2", "L3", "L4", "L5"));
-        check("Search \"JAVA\"", ids(gestion.rechercherParTheme("JAVA")), Arrays.asList("L1", "L3"));
-        check("Search \" java \"", ids(gestion.rechercherParTheme(" java ")), Arrays.asList("L1", "L3"));
-        check("Search \"HISTOIRE\"", ids(gestion.rechercherParTheme("HISTOIRE")), new ArrayList<>());
+        check("List all books", getIds(gestion.listerLivres()), Arrays.asList("L1", "L2", "L3", "L4", "L5"));
+        check("Search \"JAVA\"", getIds(gestion.rechercherParTheme("JAVA")), Arrays.asList("L1", "L3"));
+        check("Search \" java \"", getIds(gestion.rechercherParTheme(" java ")), Arrays.asList("L1", "L3"));
+        check("Search \"HISTOIRE\"", getIds(gestion.rechercherParTheme("HISTOIRE")), new ArrayList<>());
 
         checkException("Search with null theme", gestion, null);
         checkException("Search with empty theme", gestion, "");
@@ -27,12 +27,12 @@ public class TestBibliothequeLocal {
         System.exit(failures == 0 ? 0 : 1);
     }
 
-    private static List<String> ids(List<Livre> livres) {
-        List<String> ids = new ArrayList<>();
+    private static List<String> getIds(List<Livre> livres) {
+        List<String> getIds = new ArrayList<>();
         for (Livre l : livres) {
-            ids.add(l.getIdentifiant());
+            getIds.add(l.getIdentifiant());
         }
-        return ids;
+        return getIds;
     }
 
     private static void check(String name, List<String> actual, List<String> expected) {

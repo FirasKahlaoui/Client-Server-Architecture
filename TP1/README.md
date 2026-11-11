@@ -23,11 +23,13 @@ TP1/
 Compile all Java source files into the `bin/` directory:
 
 ### Windows (PowerShell)
+
 ```powershell
 javac -d bin -sourcepath src (Get-ChildItem -Recurse -Filter *.java src).FullName
 ```
 
 ### Linux / macOS / Bash
+
 ```bash
 find src -name "*.java" | xargs javac -d bin -sourcepath src
 ```
@@ -37,9 +39,11 @@ find src -name "*.java" | xargs javac -d bin -sourcepath src
 ## Execution Commands
 
 ### Exercise 1: Local Domain Test
+
 Run the local unit test suite without network sockets:
+
 ```bash
-java -cp bin test.TestBibliothequeLocal
+java -cp bin ex1.TestBibliothequeLocal
 ```
 
 ---
@@ -47,6 +51,7 @@ java -cp bin test.TestBibliothequeLocal
 ### Exercise 2: TCP PING / PONG
 
 1. **Start Server** (Default port: `5000`):
+
    ```bash
    java -cp bin ex2.ServeurBibliothequeTCP 5000
    ```
@@ -61,6 +66,7 @@ java -cp bin test.TestBibliothequeLocal
 ### Exercise 3: TCP Library Server & Client
 
 1. **Start Library Server** (Default port: `5000`):
+
    ```bash
    java -cp bin ex3.ServeurBibliotheque 5000
    ```
